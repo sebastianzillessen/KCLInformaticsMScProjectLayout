@@ -1,6 +1,7 @@
 %&latexf
 \documentclass[a4paper]{article}
 \usepackage{color}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
 \setlength{\hoffset}{-0.5in}\hoffset-0.5in
 \setlength{\textwidth}{15cm}
 \usepackage{hyperref}
@@ -47,10 +48,15 @@
 
 
 \begin{document}
+\include{structure/front_page}
 
-\include{ThesisFrontPage}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\text{}\newpage
+% empty page after main page.
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\include{contents/abstract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{tocdepth}{4}
 \tableofcontents
@@ -68,143 +74,28 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{ThesisAcknowledgements}
-%\include{Thesis_Part1_Introduction}
-%\include{Thesis_Part2_Tools}
-%\include{Thesis_Part3_Large}
-%\include{Thesis_Part4_Small}
-
-
-
-
+\include{structure/declaration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{contents/introduction}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Option pricing}
-\subsection{The fundamental theorem of asset pricing}
-
-\subsection{The Black-Scholes model}
-Consider a given probability space $(\Omega, (\mathcal{F})_t,\mathbb{P})$ 
-supporting a Brownian motion~$(W_t)_{t\geq 0}$.
-In the Black-Scholes model, the stock price process~$(S_t)_{t\geq 0}$ is the unique strong solution to
-the following stochastic differential equation:
-\begin{equation}\label{eq:BS}
-\frac{\D S_t}{S_t} = r \D t + \sigma \D W_t,
-\qquad S_0>0,
-\end{equation}
-where $r\geq 0$ denotes the instantaneous risk-free interest rate and $\sigma>0$ the instantaneous volatility.
-
-\subsubsection{No interest rates}
-\subsubsection{Including interest rates}
-A European call price $C_t(S_0,K,\sigma)$ with maturity $t>0$ and strike $K>0$ 
-pays at maturity $(S_t-K)_+=\max(S_t-K,0)$. 
-When the stock price follows the Black-Scholes SDE~\eqref{eq:BS}, 
-Black and Scholes~\cite{BS73} proved that its price at inception is worth
-$$
-C_t(S_0,K,\sigma) = S_0\mathcal{N}(d_+) - K\E^{-rt}\mathcal{N}(d_-),
-$$
-where
-$$
-d_{\pm} := \frac{\log\left(S_0 \E^{rt}/K\right)}{\sigma\sqrt{t}} \pm \frac{\sigma\sqrt{t}}{2},
-$$
-and where~$\mathcal{N}$ denotes the cumulative distribution function of the Gaussian random variable.
-
-Here is an example of how to insert a picture:
-
-\begin{figure}[!ht]
-\centering
-\subfigure{\includegraphics[scale=0.2]{Picture.eps}}
-\caption{This is the caption for the figure.}
-\label{fig:Pict}
-\end{figure}
-
-or two side-by-side pictures:
-
-\begin{figure}[!ht]
-\centering
-\subfigure{\includegraphics[scale=0.3]{Picture.eps}}
-\hspace{15pt}
-\subfigure{\includegraphics[scale=0.3]{Picture.eps}}
-\caption{Another caption}
-\label{fig:Pict2}
-\end{figure}
-
-\subsection{The Heston model}
-In the Heston model, the stock price is the unique strong solution to the following stochastic differential equation:
-\begin{equation}\label{eq:Heston}
-\begin{array}{rll}
-\D S_t & = S_t \sqrt{V_t} \D W_t, & S_0 = s>0,\\
-\D V_t & = \kappa(\theta-V_t)\D t + \xi\sqrt{V_t}\D Z_t, & V_0 = v_0>0,\\
-\D \langle W, Z\rangle_t & = \rho \D t,
-\end{array}
-\end{equation}
-where $\kappa, \xi, \theta, v_0, s>0$ and the correlation parameter $\rho$ lies in $[-1,1]$.
-
-\newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Model calibration}
-\subsection{What is calibration?}
-Here is an example of a matrix in $A\in\mathcal{M}_n(\RR)$:
-$$
-A = 
-\begin{pmatrix}
-a_{11} & a_{12} & \ldots & a_{1n}\\
-a_{21} & \ddots & \ddots  & \vdots\\
-\vdots &  \ddots & \ddots  & \vdots\\
-a_{n1} &  \ldots &  \ldots & a_{1n}.
-\end{pmatrix}
-$$
-
-\subsection{Numerical methods for calibration}
-...
-
-
-
+\include{contents/chap1}
+\include{contents/chap2}
+\include{contents/conclusion}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
-
-\section{Review of stochastic calculus}
-\subsection{Riemann integration}
-\subsection{The It\^o integral}
-
-
-\section{Some technical proofs}
-
+\include{appendix/app_1}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\include{ThesisConclusion}
-
+\include{structure/acknowledgements}
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{thebibliography}{9}
-\bibitem{BS73}F.~ Black and M.~Scholes.
-The Pricing of Options and Corporate Liabilities.
-\textit{Journal of Political Economy}, {\tt 81} (3): 637-659, 1973.
+\bibliographystyle{plain}
+\bibliography{bibs/sample1,bibs/sample2} 
 
-\bibitem{KS97}I.~ Karatzas and S.E.~Shreve.
-Brownian Motion and Stochastic Calculus.
-Springer-Verlag, 1997.
-
-\bibitem{KT81}S.~Karlin and H.~Taylor.
-A Second Course in Stochastic Processes. 
-Academic Press, 1981.
-
-\bibitem{Tank} P.~Tankov.
-Pricing and hedging in exponential L\'evy models: review of recent results. 
-\textit{Paris-Princeton Lecture Notes in Mathematical Finance}, Springer, 2010. 
-
-\bibitem{W03}D.~Williams.
-Probability With Martingales.
-CUP, 1991.
-
-\end{thebibliography}
-
-\include{ThesisAcknowledgements}
 
 \end{document}
