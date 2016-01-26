@@ -3,7 +3,9 @@ This is an unofficial LaTeX template for KCL MSc Projects for the Informatics De
 
 It is derived from the Imperial College London Thesis template (which can be found here: https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/public/study/admissions/pg/msc/math-fin/MScThesisTemplate.zip).
 
-Some changes have been made by Sebastian Zillessen to adapt it to KCL.
+Some changes have been made by Sebastian Zillessen (sebastian.zillessen@kcl.ac.uk) to adapt it to KCL.
+
+The front page has been adapted from the official front page of KCL which was ported to LaTex by André Müller (andre.mueller@kcl.ac.uk). Many thanks!
 
 Feel free to modify it or adapt it to your requirements. 
 
