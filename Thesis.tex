@@ -12,6 +12,12 @@
 \usepackage{color}
 \usepackage[dvips]{graphicx}
 \usepackage{subfigure}
+
+% nomenclature 
+%\usepackage[intoc]{nomencl}
+% glossaries
+\usepackage[toc, acronym]{glossaries} 
+
 \linespread{1.5}
 %\font\twelvemsb=msbm10 at 12pt
 \newfam\msbfam
@@ -47,6 +53,12 @@
 \def\red#1{\textcolor{red}{#1}}
 
 
+%\makenomenclature
+\makeglossaries
+
+
+
+
 \begin{document}
 \pagenumbering{gobble}
 \include{structure/front_page}
@@ -63,10 +75,9 @@
 \setcounter{tocdepth}{4}
 \tableofcontents
 \newpage
-\pagenumbering{gobble}
-%\newpage
-%\include{ThesisNotations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{structure/figures_tables}
+\include{structure/acknowledgements}
 \fancyhead{}
 \fancyfoot{}
 \pagestyle{fancy} 
@@ -77,29 +88,29 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{structure/declaration}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%% Main content
 \pagenumbering{arabic}
 \include{contents/introduction}
-\include{contents/chap1}
-\include{contents/chap2}
+\include{contents/background}
+\include{contents/main}
 \include{contents/conclusion}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{contents/nomenclature}
+%%%%% References
+\bibliographystyle{ieeetr}
+\bibliography{bibs/sample1, bibs/sample2} 
+%%%%% Declaration
+\include{structure/declaration}
+%%%%% Appendix 
 \appendix
 \include{appendix/app_1}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\include{structure/acknowledgements}
-\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliographystyle{plain}
-\bibliography{bibs/sample1,bibs/sample2} 
 
 
 \end{document}
