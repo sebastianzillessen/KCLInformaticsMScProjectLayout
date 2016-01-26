@@ -48,6 +48,7 @@
 
 
 \begin{document}
+\pagenumbering{gobble}
 \include{structure/front_page}
 
 % empty page after main page.
@@ -58,9 +59,11 @@
 
 \include{contents/abstract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}
 \setcounter{tocdepth}{4}
 \tableofcontents
 \newpage
+\pagenumbering{gobble}
 %\newpage
 %\include{ThesisNotations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,6 +79,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{structure/declaration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
 \include{contents/introduction}
 \include{contents/chap1}
 \include{contents/chap2}
