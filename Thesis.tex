@@ -1,26 +1,22 @@
 %&latexf
-\documentclass[a4paper]{article}
+\documentclass{kclthesis}
 \usepackage{color}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
-\setlength{\hoffset}{-0.5in}\hoffset-0.5in
-\setlength{\textwidth}{15cm}
 \usepackage{hyperref}
-\usepackage{amsmath, amsfonts, amsthm, amssymb}
 \usepackage{verbatim}
 \usepackage{stmaryrd}
 \usepackage{fancyhdr}
-\usepackage{color}
-\usepackage[dvips]{graphicx}
 \usepackage{subfigure}
+
+% nomenclature 
+%\usepackage[intoc]{nomencl}
+% glossaries
+\usepackage[toc, acronym]{glossaries} 
+
 \linespread{1.5}
-%\font\twelvemsb=msbm10 at 12pt
 \newfam\msbfam
-%\textfont\msbfam=\twelvemsb
 \def\Bbb#1{\fam\msbfam\relax#1}
 
-\topmargin = 20pt
-\voffset = -20pt
-\addtolength{\textheight}{2cm}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{exa}{Example}[section]
 \newtheorem{corollary}[theorem]{Corollary}
@@ -46,27 +42,49 @@
 \def\blue#1{\textcolor{blue}{#1}}
 \def\red#1{\textcolor{red}{#1}}
 
+% customize
+\title{Super duper test title - A Better approach}
+\author{John Doe}
+\modulecode{7CCSMPRJ}
+\submissiontitle{Individual Project Submission 2015/16}
+\studentnumber{XXXXX}
+\programme{MSc Web Intelligence MSc}
+\supervisor{Dr Frankenstein}
+%\wordcount{XXXXXXX}
+
+
+
+
+%\makenomenclature
+\makeglossaries
+
+
+
 
 \begin{document}
 \pagenumbering{gobble}
-\include{structure/front_page}
 
-% empty page after main page.
+
+%%%%%% depends what you like, might try out the other frontpage as well
+\maketitle 		% official styled layout
+\maketitleTwo 	% adapted layout which looks nicer from my point of view.
+
+%%%%%% empty page after main page.
 \newpage
 \thispagestyle{empty}
 \mbox{}
 \newpage
-
+%%%%%% Abstract
 \include{contents/abstract}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Table of contents
+
 \pagenumbering{roman}
 \setcounter{tocdepth}{4}
 \tableofcontents
 \newpage
-\pagenumbering{gobble}
-%\newpage
-%\include{ThesisNotations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{structure/figures_tables}
+\include{structure/acknowledgements}
 \fancyhead{}
 \fancyfoot{}
 \pagestyle{fancy} 
@@ -77,30 +95,29 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{structure/declaration}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%% Main content
 \pagenumbering{arabic}
 \include{contents/introduction}
-\include{contents/literature}
-\include{contents/chap1}
-\include{contents/chap2}
+\include{contents/background}
+\include{contents/main}
 \include{contents/conclusion}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{contents/nomenclature}
+%%%%% References
+\bibliographystyle{ieeetr}
+\bibliography{bibs/sample1, bibs/sample2} 
+%%%%% Declaration
+\include{structure/declaration}
+%%%%% Appendix 
 \appendix
 \include{appendix/app_1}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\include{structure/acknowledgements}
-\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliographystyle{plain}
-\bibliography{bibs/sample1,bibs/sample2} 
 
 
 \end{document}
