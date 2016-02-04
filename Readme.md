@@ -7,7 +7,7 @@ Unfortunately it has no Licence given, therefore I publish this under the MIT Li
 
 Changes have been made by Sebastian Zillessen (sebastian.zillessen@kcl.ac.uk) to adapt it to KCL.
 
-The front page has been adapted from the official front page of KCL which was ported to LaTex by André Müller (andre.mueller@kcl.ac.uk). Many thanks!
+The front page has been adapted from the official front page of KCL which was ported to LaTex by Andre Müller (andre.mueller@kcl.ac.uk). Many thanks!
 
 Feel free to modify it or adapt it to your requirements, just make sure that you share your wisdom with everyone else by submitting a merge request.
 
