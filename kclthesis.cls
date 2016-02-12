@@ -2,29 +2,46 @@
 \NeedsTeXFormat{LaTeX2e}
 
 % Options
-\newif\ifkclthesis@releaseproject
-\DeclareOption{releaseproject}{\kclthesis@releaseprojecttrue}
-\DeclareOption{notreleaseproject}{\kclthesis@releaseprojectfalse}
+%\newif\ifkclthesis@releaseproject
+%\newif\ifkclthesis@notreleaseproject
+%\newif\ifkclthesis@undreleaseproject
+%
+%\DeclareOption{releaseproject}{\kclthesis@releaseprojecttrue\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojectfalse}
+%\DeclareOption{notreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojecttrue\kclthesis@undreleaseprojectfalse}
+%\DeclareOption{undreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojecttrue}
+%\ExecuteOptions{undreleaseproject}
+%
+%\ProcessOptions*
 
-\ExecuteOptions{releaseproject}
-\ProcessOptions\relax
+
+\newif\ifkclthesis@releaseproject
+\newif\ifkclthesis@notreleaseproject
+\newif\ifkclthesis@undreleaseproject
+
+\DeclareOption{releaseproject}{\kclthesis@releaseprojecttrue\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojectfalse}
+\DeclareOption{notreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojecttrue\kclthesis@undreleaseprojectfalse}
+\DeclareOption{undreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojecttrue}
+\ExecuteOptions{undreleaseproject}
+
+\ProcessOptions*% process options it the order the user provides them
 
 % Macros
-\newcommand*{\modulecode}[1]{\gdef\@modulecode{#1}%
-}
-\newcommand*{\@modulecode}{Module Code}
+\newcommand*{\modulecode}[1]{\gdef\@modulecode{#1}}
+\newcommand*{\@modulecode}{\red{Missing Module Code}}
 \newcommand*{\submissiontitle}[1]{\gdef\@submissiontitle{#1}}
-\newcommand*{\@submissiontitle}{Submission Title}
+\newcommand*{\@submissiontitle}{\red{Missing Submission title}}
 \newcommand*{\studentnumber}[1]{\gdef\@studentnumber{#1}}
-\newcommand*{\@studentnumber}{~}
+\newcommand*{\@studentnumber}{\red{Missing Studentnumber}}
 \newcommand*{\programme}[1]{\gdef\@programme{#1}}
-\newcommand*{\@programme}{~}
+\newcommand*{\@programme}{\red{Missing Program}}
 \newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}}
-\newcommand*{\@supervisor}{~}
+\newcommand*{\@supervisor}{\red{Missing supervisor}}
 \newcommand*{\wordcount}[1]{\gdef\@wordcount{#1}}
-\newcommand*{\@wordcount}{~}
+\newcommand*{\@wordcount}{\red{Missing wordcount}}
 \newcommand*{\signdate}[1]{\gdef\@signdate{#1}}
 \newcommand*{\@signdate}{\today}
+
+
 
 \LoadClass[11pt,a4paper]{article}
 
@@ -115,13 +132,20 @@
 	\end{framed}
 
 	\begin{flushleft}
-	\ifkclthesis@releaseproject
-		$\CheckedBox$ I \textbf{agree} to the release of my project\\
-		$\square$ I \textbf{do not} agree to the release of my project
-	\else
-		$\square$ I \textbf{agree} to the release of my project\\
-		$\CheckedBox$ I \textbf{do not} agree to the release of my project
-	\fi
+		\ifkclthesis@releaseproject
+			$\CheckedBox$ I \textbf{agree} to the release of my project\\
+			$\square$ I \textbf{do not} agree to the release of my project	
+		\fi
+		\ifkclthesis@notreleaseproject
+			$\square$ I \textbf{agree} to the release of my project\\
+			$\CheckedBox$ I \textbf{do not} agree to the release of my project
+		\fi
+		\ifkclthesis@undreleaseproject
+			\red{
+				\fbox{?} I \textbf{agree} to the release of my project\\
+				\fbox{?} I \textbf{do not} agree to the release of my project
+			}
+		\fi
 	\end{flushleft}
 \end{minipage}
 
