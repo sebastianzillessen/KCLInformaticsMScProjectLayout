@@ -44,7 +44,6 @@
 \RequirePackage{amsmath, amsfonts, amsthm, amssymb}
 
 \RequirePackage{wasysym}
-\RequirePackage{MnSymbol}
 
 % TO DO NOTES
 \RequirePackage{todonotes}
