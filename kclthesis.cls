@@ -1,18 +1,5 @@
-\ProvidesClass{kclthesis}[2016/01/20 KCL MSc Thesis Class by Andre Mueller]
+\ProvidesClass{kclthesis}[2016/02/13 KCL MSc Thesis Class by Sebastian Zillessen and Andre Mueller]
 \NeedsTeXFormat{LaTeX2e}
-
-% Options
-%\newif\ifkclthesis@releaseproject
-%\newif\ifkclthesis@notreleaseproject
-%\newif\ifkclthesis@undreleaseproject
-%
-%\DeclareOption{releaseproject}{\kclthesis@releaseprojecttrue\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojectfalse}
-%\DeclareOption{notreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojecttrue\kclthesis@undreleaseprojectfalse}
-%\DeclareOption{undreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojecttrue}
-%\ExecuteOptions{undreleaseproject}
-%
-%\ProcessOptions*
-
 
 \newif\ifkclthesis@releaseproject
 \newif\ifkclthesis@notreleaseproject
@@ -45,25 +32,17 @@
 
 \LoadClass[11pt,a4paper]{article}
 
-
-% Fonts
-%\RequirePackage[quiet]{fontspec}
-%\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
-
-%\newfontfamily\coverpagefont[]{Arial}
-%\newfontfamily\bodyfont[]{Helvetica Neue}
-%\newfontfamily\headingfont[]{Helvetica Neue Condensed Bold}
-
-%\defaultfontfeatures{Mapping=tex-text}
-%\setmainfont[Mapping=tex-text]{Helvetica Neue}
-
 % Mathfonts
 \RequirePackage{amsmath, amsfonts, amsthm, amssymb}
-
 \RequirePackage{wasysym}
 
-% TO DO NOTES
-\RequirePackage{todonotes}
+%Additional Packages
+\RequirePackage{color}
+\RequirePackage[nottoc,notlot,notlof]{tocbibind}
+\RequirePackage{hyperref}
+\RequirePackage{fancyhdr}
+\RequirePackage{subfigure}
+
 
 % Cover Page
 \RequirePackage{graphicx}
@@ -165,6 +144,8 @@
 \newcommand*{\maketitleTwo}{
 \end{titlepage}
 
+% Second Cover Page
+
 \begin{titlepage}
 \thispagestyle{empty}
 \null\vskip0.2in%
@@ -180,7 +161,8 @@ United Kingdom
 \vspace{1.5cm}
 
 \begin{center}
-\LARGE{{\bf \@title
+\LARGE{{\bf 
+\@title
 }}\\
 \vspace{0.2cm}
 \vskip\bigskipamount % or other desired dimension
@@ -189,7 +171,8 @@ United Kingdom
 \nointerlineskip
 \end{center}
 
-\vspace{0.2cm}
+\vspace{0.2cm}
+
 \begin{center}
 {\bf \@author}\\
 Student Number: \@studentnumber\\
@@ -201,7 +184,8 @@ Course: \@programme
 \bf{Supervisor:} \@supervisor
 \end{center}
 
-\vspace{1cm}
+\vspace{1cm}
+
 \begin{figure}[!h]
 \centering
 \includegraphics[width=3.5cm]{img/kcl}

@@ -17,3 +17,4 @@ I do not give any guarantee on this template that it fullfils the KCL regulation
 
 Feel free to use the layout for your own projects. If you're making changes that could be useful to other users as well, 
 please contribute by creating a pull request and state what you changed. 
+The repository can be found here: https://github.com/sebastianzillessen/KCLInformaticsMScProjectLayout
