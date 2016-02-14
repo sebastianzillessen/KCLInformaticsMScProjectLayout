@@ -12,6 +12,27 @@
 
 \ProcessOptions*% process options it the order the user provides them
 
+\LoadClass[11pt,a4paper]{article}
+
+% Mathfonts
+\RequirePackage{amsmath, amsfonts, amsthm, amssymb}
+\RequirePackage{wasysym}
+
+%Additional Packages
+\RequirePackage{color}
+\RequirePackage[nottoc,notlot,notlof]{tocbibind}
+\RequirePackage{hyperref}
+\RequirePackage{fancyhdr}
+\RequirePackage{subfigure}
+\RequirePackage[textsize=tiny,figwidth=8cm]{todonotes}
+
+% Cover Page
+\RequirePackage{graphicx}
+\RequirePackage[paper=a4paper]{geometry}
+\RequirePackage{setspace}
+\RequirePackage{framed}
+
+
 % Macros
 \newcommand*{\modulecode}[1]{\gdef\@modulecode{#1}}
 \newcommand*{\@modulecode}{\red{Missing Module Code}}
@@ -28,27 +49,9 @@
 \newcommand*{\signdate}[1]{\gdef\@signdate{#1}}
 \newcommand*{\@signdate}{\today}
 
-
-
-\LoadClass[11pt,a4paper]{article}
-
-% Mathfonts
-\RequirePackage{amsmath, amsfonts, amsthm, amssymb}
-\RequirePackage{wasysym}
-
-%Additional Packages
-\RequirePackage{color}
-\RequirePackage[nottoc,notlot,notlof]{tocbibind}
-\RequirePackage{hyperref}
-\RequirePackage{fancyhdr}
-\RequirePackage{subfigure}
-
-
-% Cover Page
-\RequirePackage{graphicx}
-\RequirePackage[paper=a4paper]{geometry}
-\RequirePackage{setspace}
-\RequirePackage{framed}
+% New Comment for todonotes
+\newcommand{\insertref}[1]{\todo[color=green!40]{#1}}\newcommand{\explainindetail}[1]{\todo[color=red!40]{#1}}
+\newcommand{\askfeedback}[1]{\todo[color=blue!40]{#1}}
 
 \renewcommand*{\maketitle}{
 \begin{titlepage}
