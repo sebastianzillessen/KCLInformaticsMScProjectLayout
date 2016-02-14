@@ -2,10 +2,10 @@
 \documentclass[]{kclthesis}  % [releaseproject] will check release,
 							 % [notreleaseproject] will check not release.
 
-% nomenclature 
+% nomenclature
 %\usepackage[intoc]{nomencl}
 % glossaries
-\usepackage[toc, acronym]{glossaries} 
+\usepackage[toc, acronym]{glossaries}
 
 \linespread{1.5}
 \newfam\msbfam
@@ -80,12 +80,14 @@
 \setcounter{tocdepth}{4}
 \tableofcontents
 \newpage
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{structure/figures_tables}
 \include{structure/acknowledgements}
 \fancyhead{}
 \fancyfoot{}
-\pagestyle{fancy} 
+\pagestyle{fancy}
 %\fancyhead{\sffamily\small \thepage}
 %\fancyhead{\sffamily\small \nouppercase{\rightmark}}
 \fancyhead[RO,LE]{\sffamily\small \thepage}
@@ -104,10 +106,10 @@
 \include{contents/nomenclature}
 %%%%% References
 \bibliographystyle{ieeetr}
-\bibliography{bibs/sample1, bibs/sample2} 
+\bibliography{bibs/sample1, bibs/sample2}
 %%%%% Declaration
 \include{structure/declaration}
-%%%%% Appendix 
+%%%%% Appendix
 \appendix
 \include{appendix/app_1}
 
