@@ -50,8 +50,8 @@
 \newcommand*{\@signdate}{\today}
 
 % New Comment for todonotes
-\newcommand{\insertref}[1]{\todo[color=green!40]{#1}}\newcommand{\explainindetail}[1]{\todo[color=red!40]{#1}}
-\newcommand{\askfeedback}[1]{\todo[color=blue!40]{#1}}
+\newcommand{\insertref}[1]{\todo[color=green!40]{RefMissing: #1}}\newcommand{\explainindetail}[1]{\todo[color=red!40]{Explain: #1}}
+\newcommand{\askfeedback}[1]{\todo[color=blue!40]{Feedback Required: #1}}
 
 \renewcommand*{\maketitle}{
 \begin{titlepage}
@@ -143,9 +143,10 @@
 		\textbf{Date:} \@signdate
 	\end{flushleft}
 \end{minipage}
+
+\end{titlepage}
 }
 \newcommand*{\maketitleTwo}{
-\end{titlepage}
 
 % Second Cover Page
 
