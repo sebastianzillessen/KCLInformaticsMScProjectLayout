@@ -1,5 +1,5 @@
 %&latexf
-\documentclass[]{kclthesis}  % [releaseproject] will check release,
+\documentclass[isdraft]{kclthesis}  % [releaseproject] will check release,
 							 % [notreleaseproject] will check not release.
 
 % nomenclature 
@@ -7,50 +7,17 @@
 % glossaries
 \usepackage[toc, acronym]{glossaries} 
 
-\linespread{1.5}
-\newfam\msbfam
-\def\Bbb#1{\fam\msbfam\relax#1}
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{exa}{Example}[section]
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{notation}[theorem]{Notation}
-\newtheorem{assumption}[theorem]{Assumption}
-\newtheorem{conjecture}[theorem]{Conjecture}
-
-\newcommand{\ind}{1\hspace{-2.1mm}{1}} %Indicator Function
-\newcommand{\I}{\mathtt{i}}
-\newcommand{\D}{\mathrm{d}}
-\newcommand{\E}{\mathrm{e}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\sgn}{\mathrm{sgn}}
-\newcommand{\atanh}{\mathrm{arctanh}}
-\def\equalDistrib{\,{\buildrel \Delta \over =}\,}
-\numberwithin{equation}{section}
-\def\blue#1{\textcolor{blue}{#1}}
-\def\red#1{\textcolor{red}{#1}}
 
 % customize your general setup here
-\title{Super duper test title - A Better approach}
+\title{Super duper test title}
 \author{John Doe}
 %\modulecode{7CCSMPRJ}
+%\department{Department of Informatics}
 %\submissiontitle{Individual Project Submission 2015/16}
 %\studentnumber{XXXXX}
 %\programme{MSc Web Intelligence MSc}
 %\supervisor{Dr Frankenstein}
 %\wordcount{XXXXXXX}
-
-
-\usepackage{draftwatermark}
-\SetWatermarkText{DRAFT}
-\SetWatermarkScale{8}
-
 
 
 %\makenomenclature

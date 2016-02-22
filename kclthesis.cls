@@ -4,15 +4,26 @@
 \newif\ifkclthesis@releaseproject
 \newif\ifkclthesis@notreleaseproject
 \newif\ifkclthesis@undreleaseproject
+\newif\ifkclthesis@isdraft
 
 \DeclareOption{releaseproject}{\kclthesis@releaseprojecttrue\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojectfalse}
 \DeclareOption{notreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojecttrue\kclthesis@undreleaseprojectfalse}
 \DeclareOption{undreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojecttrue}
+
+\DeclareOption{isdraft}{\kclthesis@isdrafttrue}
+
 \ExecuteOptions{undreleaseproject}
 
 \ProcessOptions*% process options it the order the user provides them
 
 \LoadClass[11pt,a4paper]{article}
+
+\ifkclthesis@isdraft
+	\RequirePackage{draftwatermark}
+	\SetWatermarkText{DRAFT}
+	\SetWatermarkScale{8}
+\fi
+
 
 % Mathfonts
 \RequirePackage{amsmath, amsfonts, amsthm, amssymb}
@@ -33,9 +44,13 @@
 \RequirePackage{framed}
 
 
-% Macros
+
+
+%%%% VARIABLES
 \newcommand*{\modulecode}[1]{\gdef\@modulecode{#1}}
 \newcommand*{\@modulecode}{\red{Missing Module Code}}
+\newcommand*{\department}[1]{\gdef\@department{#1}}
+\newcommand*{\@department}{\red{Missing Department}}
 \newcommand*{\submissiontitle}[1]{\gdef\@submissiontitle{#1}}
 \newcommand*{\@submissiontitle}{\red{Missing Submission title}}
 \newcommand*{\studentnumber}[1]{\gdef\@studentnumber{#1}}
@@ -49,6 +64,38 @@
 \newcommand*{\signdate}[1]{\gdef\@signdate{#1}}
 \newcommand*{\@signdate}{\today}
 
+
+% MACRO 
+\linespread{1.5}
+\newfam\msbfam
+\def\Bbb#1{\fam\msbfam\relax#1}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{exa}{Example}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newcommand{\ind}{1\hspace{-2.1mm}{1}} %Indicator Function
+\newcommand{\I}{\mathtt{i}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\E}{\mathrm{e}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\atanh}{\mathrm{arctanh}}
+\def\equalDistrib{\,{\buildrel \Delta \over =}\,}
+\numberwithin{equation}{section}
+\def\blue#1{\textcolor{blue}{#1}}
+\def\red#1{\textcolor{red}{#1}}
+
+
 % New Comment for todonotes
 \newcommand{\insertref}[1]{\todo[color=green!40]{RefMissing: #1}}\newcommand{\explainindetail}[1]{\todo[color=red!40]{Explain: #1}}
 \newcommand{\askfeedback}[1]{\todo[color=blue!40]{Feedback Required: #1}}
@@ -60,7 +107,7 @@
 \begin{flushleft}
 \textbf{Faculty of Natural and\\
 	Mathematical Sciences\\}
-\small{Department of Informatics}
+\small{\@department}
 \end{flushleft}
 \end{minipage}%
 \begin{minipage}{0.25\textwidth}
@@ -155,7 +202,7 @@
 \null\vskip0.2in%
 
 \begin{center}
-Department of Informatics \\ 
+\@department \\ 
 King's College London \\
 WC2R 2LS London \\ 
 United Kingdom
