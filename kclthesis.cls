@@ -24,7 +24,7 @@
 	\RequirePackage{draftwatermark}
 	\SetWatermarkText{DRAFT}
 	\SetWatermarkScale{8}
-\
+\fi
 
 \ifkclthesis@kclharvardbib
 	\RequirePackage{natbib}
