@@ -4,7 +4,7 @@
 \newif\ifkclthesis@releaseproject
 \newif\ifkclthesis@notreleaseproject
 \newif\ifkclthesis@undreleaseproject
-\newif\ifkclthesis@
+\newif\ifkclthesis@isdraft
 \newif\ifkclthesis@kclharvardbib
 
 \DeclareOption{releaseproject}{\kclthesis@releaseprojecttrue\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojectfalse}
