@@ -4,13 +4,15 @@
 \newif\ifkclthesis@releaseproject
 \newif\ifkclthesis@notreleaseproject
 \newif\ifkclthesis@undreleaseproject
-\newif\ifkclthesis@isdraft
+\newif\ifkclthesis@
+\newif\ifkclthesis@kclharvardbib
 
 \DeclareOption{releaseproject}{\kclthesis@releaseprojecttrue\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojectfalse}
 \DeclareOption{notreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojecttrue\kclthesis@undreleaseprojectfalse}
 \DeclareOption{undreleaseproject}{\kclthesis@releaseprojectfalse\kclthesis@notreleaseprojectfalse\kclthesis@undreleaseprojecttrue}
 
 \DeclareOption{isdraft}{\kclthesis@isdrafttrue}
+\DeclareOption{kclharvardbib}{\kclthesis@kclharvardbibtrue}
 
 \ExecuteOptions{undreleaseproject}
 
@@ -22,6 +24,10 @@
 	\RequirePackage{draftwatermark}
 	\SetWatermarkText{DRAFT}
 	\SetWatermarkScale{8}
+\
+
+\ifkclthesis@kclharvardbib
+	\RequirePackage{natbib}
 \fi
 
 
@@ -97,8 +103,10 @@
 
 
 % New Comment for todonotes
-\newcommand{\insertref}[1]{\todo[color=green!40]{RefMissing: #1}}\newcommand{\explainindetail}[1]{\todo[color=red!40]{Explain: #1}}
-\newcommand{\askfeedback}[1]{\todo[color=blue!40]{Feedback Required: #1}}
+\newcommand{\insertref}[1]{\todo[color=green!40]{RefMissing: #1}}
+\newcommand{\explainindetail}[1]{\todo[color=red!40]{Explain: #1}}
+\newcommand{\askfeedback}[1]{\todo[color=blue!40]{Feedback Required: #1}}
+
 
 \renewcommand*{\maketitle}{
 \begin{titlepage}
