@@ -1,6 +1,8 @@
 # Disclaimer
 This is an unofficial LaTeX template for KCL MSc Projects for the Informatics Department. 
 
+How ever it has been approved by the supervisor for the MSc Projects for 2015/16 of the Informatics Department Hak-Keung Lam (hak-keung.lam@kcl.ac.uk).
+
 It is derived from the Imperial College London Thesis template (which can be found here: https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/public/study/admissions/pg/msc/math-fin/MScThesisTemplate.zip).
 
 Unfortunately it has no Licence given, therefore I publish this under the MIT License.
