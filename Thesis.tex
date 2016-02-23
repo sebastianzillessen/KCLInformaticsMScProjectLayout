@@ -19,6 +19,11 @@
 %\supervisor{Dr Frankenstein}
 %\wordcount{XXXXXXX}
 
+%%%%%
+% Comment out the line "\usepackage{natbib}" below if you are using
+% a "author-year"-bibliography style like the King's College Harvard V1 style
+%%%%%
+%\usepackage{natbib}
 
 %\makenomenclature
 \makeglossaries
@@ -71,6 +76,15 @@
 \include{contents/nomenclature}
 %%%%% References
 \bibliographystyle{ieeetr}
+%%%%% Use King's College Harvard V1 style
+% If you want to use a bibliography style that is quite close to 
+% the King's College Harvard V1 style (http://libguides.kcl.ac.uk/reference/KingsHarvardV1): 
+% 1. Remove or comment the line "\bibliography{ieeetr}" above.
+% 2. Uncomment the line "\usepackage{natbib}" in the beginning of this file.
+% 3. Uncomment the line "\bibliography{kclharvardv1}" below.
+%%%%%
+%\bibliography{kclharvardv1}
+
 \bibliography{bibs/sample1, bibs/sample2} 
 %%%%% Declaration
 \include{structure/declaration}
