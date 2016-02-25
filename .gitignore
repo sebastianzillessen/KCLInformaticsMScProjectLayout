@@ -22,4 +22,4 @@ tm
 *.out
 *.synctex.gz
 .texpadtmp/
-*.pdf
+Thesis.pdf

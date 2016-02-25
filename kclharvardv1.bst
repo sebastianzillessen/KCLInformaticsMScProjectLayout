@@ -48,11 +48,13 @@ ENTRY
     institution
     journal
     key
+    lastvisited
     month
     note
     number
     organization
     pages
+    pubdate
     publisher
     school
     series
@@ -60,6 +62,7 @@ ENTRY
     type
     url
     volume
+    version
     year
   }
   {}
@@ -214,7 +217,7 @@ FUNCTION {bbl.edby}
 { "edited by" }
 
 FUNCTION {bbl.edition}
-{ "edition" }
+{ "Ed." }
 
 FUNCTION {bbl.volume}
 { "volume" }
@@ -243,11 +246,25 @@ FUNCTION {bbl.chapter}
 FUNCTION {bbl.techrep}
 { "Technical Report" }
 
+FUNCTION {bbl.bthesis}
+{ "Bachelor Thesis" }
+
 FUNCTION {bbl.mthesis}
-{ "Master's thesis" }
+{ "Master Thesis" }
 
 FUNCTION {bbl.phdthesis}
-{ "Ph.D. thesis" }
+{ "PhD Thesis" }
+
+FUNCTION {bbl.podcast}
+{ "[Podcast]" }
+
+FUNCTION {bbl.available}
+{ "Available:" }
+
+FUNCTION {bbl.computerprogram}
+{ "[Computer Program]" }
+
+
 
 MACRO {jan} {"January"}
 
@@ -362,11 +379,58 @@ FUNCTION {format.eprint}
   if$
 }
 FUNCTION {write.url}
-{
-  url
+{ url
   duplicate$ empty$
     { pop$ }
     { "\newline\harvardurl{" swap$ * "}" * write$ newline$ }
+  if$
+}
+FUNCTION {format.url}
+{ url duplicate$ empty$
+    { pop$ "" }
+    { "\url{" swap$ * "}" * }
+  if$
+}
+FUNCTION {format.availablefrom}
+{ url duplicate$ empty$
+    { pop$ "" }
+    { "Available~from:~\url{" swap$ * "}" * }
+  if$
+}
+FUNCTION {format.lastvisited}
+{ lastvisited duplicate$ empty$
+    { pop$ "" }
+    { "~Retrieved~\cleanlookdateon\printdate{" swap$ * "}~from" * }
+  if$
+}
+FUNCTION {format.accessed}
+{ lastvisited duplicate$ empty$
+    { pop$ "" }
+    { "(Accessed:~\cleanlookdateon\printdate{" swap$ * "})" * }
+  if$
+}
+FUNCTION {format.accessedbrackets}
+{ lastvisited duplicate$ empty$
+    { pop$ "" }
+    { "[Accessed:~\printdate{" swap$ * "}]" * }
+  if$
+}
+FUNCTION {format.downloaded}
+{ lastvisited duplicate$ empty$
+    { pop$ "" }
+    { "Downloaded~on~\cleanlookdateon\printdate{" swap$ * "}" * }
+  if$
+}
+FUNCTION {format.pubdate}
+{ pubdate duplicate$ empty$
+    { pop$ "" }
+    { "\printdate{" swap$ * "}" * }
+  if$
+}
+FUNCTION {format.version}
+{ version duplicate$ empty$
+    { pop$ "" }
+    { "(Version~" swap$ * ")" * }
   if$
 }
 
@@ -915,6 +979,8 @@ FUNCTION {book}
       if$
     }
   if$
+  format.date "year" output.check
+  date.block
   format.btitle "title" output.check
   crossref missing$
     { format.bvolume output
@@ -922,7 +988,8 @@ FUNCTION {book}
       format.number.series output
       format.edition output
       new.sentence
-      format.publisher.address output
+      address output
+      publisher output
     }
     {
       new.block
@@ -965,6 +1032,8 @@ FUNCTION {inbook}
       if$
     }
   if$
+  format.date "year" output.check
+  date.block
   format.btitle "title" output.check
   crossref missing$
     {
@@ -974,7 +1043,8 @@ FUNCTION {inbook}
       format.number.series output
       format.edition output
       new.sentence
-      format.publisher.address output
+      address output
+      publisher output
     }
     {
       format.chapter.pages "chapter and pages" output.check
@@ -1063,25 +1133,6 @@ FUNCTION {manual}
   write.url
 }
 
-FUNCTION {mastersthesis}
-{ output.bibitem
-  format.authors "author" output.check
-  author format.key output
-  format.date "year" output.check
-  date.block
-  format.btitle
-  "title" output.check
-  new.block
-  bbl.mthesis format.thesis.type output.nonnull
-  school "school" bibinfo.warn output
-  address "address" bibinfo.check output
-  new.block
-  format.note output
-  format.eprint output
-  fin.entry
-  write.url
-}
-
 FUNCTION {misc}
 { output.bibitem
   format.authors output
@@ -1094,8 +1145,27 @@ FUNCTION {misc}
   new.block
   format.note output
   format.eprint output
+  format.lastvisited output
+  add.blank
+  format.url output
   fin.entry
-  write.url
+}
+FUNCTION {website}
+{ output.bibitem
+  format.authors output
+  author format.key output
+  format.date "year" output.check
+  date.block
+  format.title output
+  new.block
+  howpublished "howpublished" bibinfo.check output
+  new.block
+  format.note output
+  format.eprint output
+  format.lastvisited output
+  add.blank
+  format.url output
+  fin.entry
 }
 FUNCTION {phdthesis}
 { output.bibitem
@@ -1114,6 +1184,119 @@ FUNCTION {phdthesis}
   format.eprint output
   fin.entry
   write.url
+}
+FUNCTION {mthesis}
+{ output.bibitem
+  format.authors "author" output.check
+  author format.key output
+  format.date "year" output.check
+  date.block
+  format.btitle
+  "title" output.check
+  new.block
+  bbl.mthesis format.thesis.type output.nonnull
+  school "school" bibinfo.warn output
+  address "address" bibinfo.check output
+  new.block
+  format.note output
+  format.eprint output
+  fin.entry
+  write.url
+}
+FUNCTION {masterthesis}
+{ mthesis }
+
+FUNCTION {bthesis}
+{ output.bibitem
+  format.authors "author" output.check
+  author format.key output
+  format.date "year" output.check
+  date.block
+  format.btitle
+  "title" output.check
+  new.block
+  bbl.bthesis format.thesis.type output.nonnull
+  school "school" bibinfo.warn output
+  address "address" bibinfo.check output
+  new.block
+  format.note output
+  format.eprint output
+  fin.entry
+  write.url
+}
+FUNCTION {bachelorthesis}
+{ bthesis }
+
+FUNCTION {podcast}
+{ output.bibitem
+  format.authors "author" output.check
+  author format.key output
+  format.date "year" output.check
+  date.block
+  format.btitle
+  "title" output.check
+  new.block
+  bbl.podcast output.nonnull
+  new.block
+  format.pubdate output
+  format.availablefrom output
+  add.blank
+  format.accessed output
+  fin.entry
+}
+
+FUNCTION {computerprogram}
+{ output.bibitem
+  format.authors "author" output.check
+  author format.key output
+  format.date "year" output.check
+  date.block
+  format.title output
+  add.blank
+  format.version output
+  add.blank
+  bbl.computerprogram output
+  new.block
+  publisher output
+  address output
+  format.availablefrom output
+  new.block
+  format.downloaded output
+  fin.entry
+}
+
+FUNCTION {onlinevideo}
+{ output.bibitem
+  format.authors "author" output.check
+  author format.key output
+  format.date "year" output.check
+  date.block
+  format.btitle
+  "title" output.check
+  new.block
+  format.availablefrom output
+  add.blank
+  format.accessed output
+  fin.entry
+}
+
+FUNCTION {newspaperarticle}
+{ output.bibitem
+  format.authors "author" output.check
+  author format.key output
+  format.date "year" output.check
+  date.block
+  format.btitle
+  "title" output.check
+  new.block
+  publisher output
+  new.block
+  bbl.available output
+  add.blank
+  format.url output
+  add.blank
+  format.accessedbrackets output
+  fin.entry
 }
 
 FUNCTION {proceedings}

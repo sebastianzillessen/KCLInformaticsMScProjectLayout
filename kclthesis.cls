@@ -28,6 +28,7 @@
 
 \ifkclthesis@kclharvardbib
 	\RequirePackage{natbib}
+	\RequirePackage[UKenglish]{isodate}
 \fi
 
 
