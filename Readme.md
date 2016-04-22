@@ -15,6 +15,21 @@ Feel free to modify it or adapt it to your requirements, just make sure that you
 
 I do not give any guarantee on this template that it fullfils the KCL regulations or any other regulations.
 
+
+## Compilation
+
+To compile the checked out template please run:
+
+````
+xelatex -file-line-error -interaction=nonstopmode Thesis.tex
+bibtex Thesis
+makeindex Thesis.acn 
+makeindex Thesis.glo 
+xelatex Thesis.tex
+````
+
+in your terminal. Alternatively (and recommended) use Texpad (https://www.texpadapp.com/) to open the project, it will recognise your required typesetting commands by default!
+
 ## How to contribute
 
 Feel free to use the layout for your own projects. If you're making changes that could be useful to other users as well, 
